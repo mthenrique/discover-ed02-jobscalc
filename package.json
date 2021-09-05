@@ -1,0 +1,18 @@
+{
+  "name": "maratonadiscovery",
+  "version": "1.0.0",
+  "description": "Freelance Calculator",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
