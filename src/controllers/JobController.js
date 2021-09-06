@@ -4,9 +4,9 @@ const Profile = require("../model/Profile");
 
 module.exports = {
     
-    save(req,res){
+    async save(req,res){
         //req.body = { name: 'qwqeqwe', 'daily-hours': '1', 'total-hours': '4' }
-        const jobs = Job.get();
+        const jobs = await Job.get();
         const lastId = jobs[jobs.length - 1]?.id || 0;
 
         Job.create({
@@ -24,10 +24,10 @@ module.exports = {
         return res.render("job");
     },
 
-    show(req, res){
+    async show(req, res){
         const jobId = req.params.id;
 
-        const jobs = Job.get();
+        const jobs = await Job.get();
 
         const job = jobs.find(job => Number(job.id) === Number(jobId));
 
@@ -35,17 +35,17 @@ module.exports = {
             return res.send("Job not found!");
         }
 
-        const profile = Profile.get();
+        const profile = await Profile.get();
 
         job.budget = JobUtils.calculateBudget(job, profile["value-hour"]);
 
         return res.render("job-edit", { job });
     },
 
-    update(req, res){
+    async update(req, res){
         const jobId = req.params.id;
 
-        const jobs = Job.get();
+        const jobs = await Job.get();
 
         const job = jobs.find(job => Number(job.id) === Number(jobId));
 
