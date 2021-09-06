@@ -14,7 +14,7 @@ module.exports = {
             total: jobs.length
         }
 
-        //taotal de horas por dia de cada Job em progresso
+        //total de horas por dia de cada Job em progresso
         let jobTotalHours = 0;
 
         const updatedJobs = jobs.map((job) => {
@@ -42,7 +42,6 @@ module.exports = {
 
         //qtd de horas que quero trabalhar MENOS quantdade de horas dia de cada job em progress
         const freeHours = profile['hours-per-day'] - jobTotalHours;
-        
         
         return res.render("index", {
             jobs: updatedJobs, 
